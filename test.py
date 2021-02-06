@@ -29,5 +29,7 @@ for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=
     # and occupied/unoccupied text
     rawCapture.truncate(0)
     image = frame.array
+    image = np.array(image)
+    print(image.shape)
     conn.sendall(image)
 	
