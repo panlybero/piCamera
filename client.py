@@ -10,8 +10,8 @@ def recv(c):
 
     data = b""
     while True:
-        block = c.recv(1024)
-        print(block)
+        block = c.recv(4096*4)
+        #print(block)
         if not block: 
             break
         data += block
@@ -27,7 +27,7 @@ while True:
 
     print(data)
     
-    cv.imshow("Frame", data["image"])
+    cv.imshow("Frame", data)
     key = cv.waitKey(1) & 0xFF
 
     if key == ord("q"):

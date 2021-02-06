@@ -33,7 +33,8 @@ for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=
     image = np.array(image)
     
     data = pickle.dumps(image)
-    print(sys.getsizeof(data))
+   
     conn.sendall(data)
+    conn.sendall("")
     rawCapture.truncate(0)
 	
