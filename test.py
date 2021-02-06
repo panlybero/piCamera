@@ -5,6 +5,7 @@ import time
 import numpy as np
 import socket
 import pickle
+import sys
 # initialize the camera and grab a reference to the raw camera capture
 camera = PiCamera()
 camera.resolution = (640, 480)
@@ -27,10 +28,12 @@ conn, addr = s.accept()
 for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=True):
     # grab the raw NumPy array representing the image, then initialize the timestamp
     # and occupied/unoccupied text
-    rawCapture.truncate(0)
+    
     image = frame.array
     image = np.array(image)
     
     data = pickle.dumps(image)
+    print(sys.getsizeof(data))
     conn.sendall(data)
+    rawCapture.truncate(0)
 	

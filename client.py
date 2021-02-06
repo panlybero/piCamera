@@ -5,15 +5,26 @@ import pickle
 HOST = '10.0.0.14'  # The server's hostname or IP address
 PORT = 4000        # The port used by the server
 
+
+def recv(c):
+
+    data = b""
+    while True:
+        block = c.recv(1024)
+        print(block)
+        if not block: 
+            break
+        data += block
+    return data
+
+
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 s.connect((HOST, PORT))
 while True:
-    data = s.recv(2048).decode()
+    data = recv(s)
     data = pickle.loads(data)
 
-    #data = b64.b64decode(data)
-    if not data:
-        break
+
     print(data)
     
     cv.imshow("Frame", data["image"])
