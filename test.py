@@ -4,7 +4,7 @@ from picamera import PiCamera
 import time
 import numpy as np
 import socket
-
+import json
 # initialize the camera and grab a reference to the raw camera capture
 camera = PiCamera()
 camera.resolution = (640, 480)
@@ -30,6 +30,7 @@ for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=
     rawCapture.truncate(0)
     image = frame.array
     image = np.array(image)
-    print(image.shape)
-    conn.sendall(image)
+    data = {"image":image}
+    data = json.dumps(data)
+    conn.sendall(data.encode())
 	
