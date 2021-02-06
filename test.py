@@ -42,7 +42,7 @@ for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=
 from vidgear.gears import VideoGear
 from vidgear.gears import NetGear
 
-server = NetGear(address = HOST, port = PORT,receive_mode=False) #Define netgear server with default settings
+server = NetGear() #Define netgear server with default settings
 
 # infinite loop until [Ctrl+C] is pressed
 for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=True):
@@ -71,7 +71,5 @@ for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=
         #break the infinite loop
         break
 
-# safely close video stream
-stream.stop()
-# safely close server
-writer.close()
+
+server.close()
