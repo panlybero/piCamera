@@ -27,6 +27,7 @@ conn, addr = s.accept()
 for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=True):
     # grab the raw NumPy array representing the image, then initialize the timestamp
     # and occupied/unoccupied text
+    rawCapture.truncate(0)
     image = frame.array
     conn.sendall(image)
 	
