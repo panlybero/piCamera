@@ -46,7 +46,7 @@ options = {"flag": 0, "copy": False, "track": False}
 # !!! change following IP address '192.168.x.xxx' with yours !!!
 client = NetGear(
     address="10.0.0.14",
-    port="4000"
+    port="4000",receive_mode=True
 )
 
 # loop over
