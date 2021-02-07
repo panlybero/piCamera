@@ -10,4 +10,4 @@ clientsocket.connect(('10.0.0.159',8089))
 while True:
     ret,frame=cap.read()
     data = pickle.dumps(frame) ### new code
-    clientsocket.sendall(struct.pack("H", len(data))+data) ### new code
+    clientsocket.sendall(struct.pack("L", len(data))+data) ### new code
