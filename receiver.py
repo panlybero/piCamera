@@ -5,7 +5,7 @@ import pickle
 import numpy as np
 import struct ## new
 
-HOST='10.0.0.14'
+HOST=''
 PORT=8089
 
 s=socket.socket(socket.AF_INET,socket.SOCK_STREAM)
