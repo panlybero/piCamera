@@ -24,6 +24,7 @@ payload_size = struct.calcsize("H")
 while True:
     while len(data) < payload_size:
         data += conn.recv(4096)
+        print("here")
     packed_msg_size = data[:payload_size]
     data = data[payload_size:]
     msg_size = struct.unpack("H", packed_msg_size)[0]
@@ -34,5 +35,5 @@ while True:
     ###
 
     frame=pickle.loads(frame_data)
-    
+    print(frame)
     cv2.imshow('frame',frame)

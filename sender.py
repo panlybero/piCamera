@@ -6,7 +6,7 @@ import pickle
 import struct ### new code
 cap=cv2.VideoCapture(0)
 clientsocket=socket.socket(socket.AF_INET,socket.SOCK_STREAM)
-clientsocket.connect(('192.168.56.1',8089))
+clientsocket.connect(('10.0.0.159',8089))
 while True:
     ret,frame=cap.read()
     data = pickle.dumps(frame) ### new code
